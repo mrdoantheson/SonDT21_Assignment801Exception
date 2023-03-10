@@ -3,44 +3,36 @@ import java.util.Scanner;
 public class Exercise1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        double num1, num2, result;
 
         // Input the first number
-        double num1 = 0;
+        System.out.print("Enter the first number: ");
         while (true) {
-            System.out.print("Enter the first number: ");
             try {
-                num1 = Integer.parseInt(scanner.nextLine());
+                num1 = Double.parseDouble(scanner.nextLine());
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.print("Invalid input. Please enter a number: ");
             }
         }
 
         // Input the second number
-        double num2 = 0;
+        System.out.print("Enter the second number: ");
         while (true) {
-            System.out.print("Enter the second number: ");
             try {
                 num2 = Double.parseDouble(scanner.nextLine());
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.print("Invalid input. Please enter a number: ");
             }
         }
 
-        // Divide the numbers
+        // Divide the two numbers
         try {
-            double result = Exercise1.divide(num1, num2);
-            System.out.println("The result of the division is: " + result);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            result = num1 / num2;
+            System.out.println(num1 + " / " + num2 + " = " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Invalid division. The second number cannot be 0.");
         }
-    }
-
-    public static double divide(double num1, double num2) throws IllegalArgumentException {
-        if (num2 == 0) {
-            throw new IllegalArgumentException("Invalid division: Division by zero is not allowed.");
-        }
-        return num1 / num2;
     }
 }
